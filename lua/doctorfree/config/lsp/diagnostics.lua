@@ -1,5 +1,18 @@
 vim.g.diagnostics_enabled = true
 
+local sign = function(opts)
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
+end
+
+sign({name = 'DiagnosticSignError', text = "✘"})
+sign({name = 'DiagnosticSignWarn', text = "⚠"})
+sign({name = 'DiagnosticSignHint', text = "•"})
+sign({name = 'DiagnosticSignInfo', text = "ⓘ"})
+
 local diagnostics = {
   off = {
     underline = true,
@@ -8,19 +21,34 @@ local diagnostics = {
     update_in_insert = false,
   },
   on = {
-    virtual_text = true, -- disable virtual text
+    virtual_text = false, -- disable virtual text
     virtual_lines = false,
-    update_in_insert = true,
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
+    signs = true,
+--  float = {
+--    focusable = false,
+--    style = "minimal",
+--    -- border = "rounded",
+--    border = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" }, -- [ top top top - right - bottom bottom bottom - left ]
+--    source = "always",
+--    header = "",
+--    prefix = "",
+--  },
     float = {
       focusable = false,
       style = "minimal",
-      -- border = "rounded",
-      border = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" }, -- [ top top top - right - bottom bottom bottom - left ]
-      source = "always",
       header = "",
       prefix = "",
+      border = "rounded",
+      format = function(diagnostic)
+        return string.format(
+          "%s (%s)",
+          diagnostic.message,
+          diagnostic.source
+        )
+      end,
     },
   },
 }
