@@ -1,3 +1,21 @@
+local settings = require('settings')
+local dashboard_type = {
+  "glepnir/dashboard-nvim",
+  event = "VimEnter",
+  dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  config = function()
+    require("doctorfree.config.dashboard")
+  end,
+}
+
+if settings.enable_alpha then
+  dashboard_type = {
+    "goolord/alpha-nvim",
+    event = "VimEnter",
+    config = function() require("doctorfree.config.alpha.alpha") end,
+  }
+end
+
 return {
   {
     "rcarriga/nvim-notify",
@@ -173,20 +191,7 @@ return {
     },
   },
 
-  {
-    "glepnir/dashboard-nvim",
-    event = "VimEnter",
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    config = function()
-      require("doctorfree.config.dashboard")
-    end,
-  },
-
-  -- {
-  --   "goolord/alpha-nvim",
-  --   event = "VimEnter",
-  --   config = function() require("doctorfree.config.alpha") end,
-  -- },
+  dashboard_type,
 
   {
     "nvim-tree/nvim-web-devicons",
