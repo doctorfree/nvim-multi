@@ -22,29 +22,60 @@ return {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
-    opts = {
-      defaults = {
-        prompt_prefix = "  ",
-        selection_caret = "❯ ",
-        borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
-        sorting_strategy = "ascending",
-        layout_config = {
-          horizontal = {
-            prompt_position = "top",
-            preview_width = 0.55,
-            results_width = 0.8,
-          },
-          vertical = {
-            mirror = false,
-          },
-          width = 0.87,
-          height = 0.80,
-          preview_cutoff = 120,
-        },
-      },
-    },
-    -- config = function() require("doctorfree.config.telescope") end,
+--  opts = {
+--    defaults = {
+--      prompt_prefix = "  ",
+--      selection_caret = "❯ ",
+--      borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
+--      sorting_strategy = "ascending",
+--      layout_config = {
+--        horizontal = {
+--          prompt_position = "top",
+--          preview_width = 0.55,
+--          results_width = 0.8,
+--        },
+--        vertical = {
+--          mirror = false,
+--        },
+--        width = 0.87,
+--        height = 0.80,
+--        preview_cutoff = 120,
+--      },
+--    },
+--  },
+    config = function() require("doctorfree.config.telescope") end,
   },
+
+  { 'crispgm/telescope-heading.nvim' },
+
+  { 'nvim-telescope/telescope-symbols.nvim' },
+
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons"
+    }
+  },
+
+  { 'nvim-telescope/telescope-ui-select.nvim' },
+
+  { 'ptethng/telescope-makefile' },
+
+  { 'jvgrootveld/telescope-zoxide' },
+
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    -- NOTE: If you are having trouble with this installation,
+    --       refer to the README for telescope-fzf-native for more instructions.
+    build = 'make',
+    cond = function()
+      return vim.fn.executable 'make' == 1
+    end,
+  },
+
+  { 'dharmx/telescope-media.nvim' },
 
   {
     "folke/which-key.nvim",
