@@ -2,11 +2,11 @@ return {
   -- no Lua alternative
   {
     'tpope/vim-fugitive',
-    lazy = true,
+    lazy = false,
   },
 
   {
     'junegunn/gv.vim',
-    lazy = true,
+    lazy = false,
   },
 }
