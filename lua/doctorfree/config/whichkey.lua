@@ -103,7 +103,7 @@ local mappings = {
     },
     ["m"] = { "<cmd>WindowsMaximize<CR>", "Zoom window" },
     ["r"] = {
-      "<cmd>source ~/.config/nvim/lua/doctorfree/core/resources/colorscheme.lua<CR>",
+      "<cmd>source ~/.config/nvim/lua/doctorfree/plugins/colorscheme.lua<CR>",
       "Reload monokai-pro",
     },
     ["f"] = {

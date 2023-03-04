@@ -195,8 +195,10 @@ local find_text_btn = dashboard.button('t', '  Find Text', ':Telescope live_g
 find_text_btn.opts.hl = 'AlphaShortcut'
 local search_project_btn = dashboard.button('p', '  Search Projects', ':Telescope projects<CR>')
 search_project_btn.opts.hl = 'AlphaShortcut'
-local session_btn = dashboard.button('k', '  Find Session', ':Telescope session-lens search_session<CR>')
+local session_btn = dashboard.button('k', '  Restore A Session', 'require("persistence").load()<CR>')
 session_btn.opts.hl = 'AlphaShortcut'
+local last_session_btn = dashboard.button('K', '  Restore Last Session', 'require("persistence").load({ last = true })<CR>')
+last_session_btn.opts.hl = 'AlphaShortcut'
 local search_zoxide_btn = dashboard.button('z', '  Search Zoxide', ':Telescope zoxide list<CR>')
 search_zoxide_btn.opts.hl = 'AlphaShortcut'
 local recent_files_btn = dashboard.button('r', '  Search Recent Files', ':Telescope oldfiles<CR>')
@@ -221,9 +223,9 @@ local clean_btn = dashboard.button('C', '  Clean Plugins', ':Lazy clean<CR>')
 clean_btn.opts.hl = 'AlphaShortcut'
 local update_btn = dashboard.button('U', '  Update Plugins', ':Lazy update<CR>')
 update_btn.opts.hl = 'AlphaShortcut'
-local install_btn = dashboard.button('L', '  Lazy', ':Lazy<CR>')
+local install_btn = dashboard.button('L', '  Lazy Menu', ':Lazy<CR>')
 install_btn.opts.hl = 'AlphaShortcut'
-local status_btn = dashboard.button('M', '  Mason', ':Mason<CR>')
+local status_btn = dashboard.button('M', '  Mason Menu', ':Mason<CR>')
 status_btn.opts.hl = 'AlphaShortcut'
 
 local buttons = {
@@ -237,6 +239,7 @@ local buttons = {
     find_text_btn,
     search_project_btn,
     session_btn,
+    last_session_btn,
     search_zoxide_btn,
     recent_files_btn,
     git_commit_btn,
@@ -257,6 +260,10 @@ local buttons = {
   position = 'center',
 }
 
+local stats = require("lazy").stats()
+local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+local lazystats = " Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+
 local header = {
   type = 'text',
   -- From https://gist.github.com/sRavioli/d6fb0a813b6affc171976b7dd09764d3
@@ -266,21 +273,6 @@ local header = {
     hl = 'AlphaHeader',
   },
 }
-
--- Lua implementation of PHP scandir function
--- local function scandir(directory)
---     local i, popen = 0, io.popen
---     local pfile = popen('ls "'..directory..'"')
---     for filename in pfile:lines() do
---         i = i + 1
---     end
---     pfile:close()
---     return i
--- end
-
-local stats = require("lazy").stats()
-local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-local lazystats = " Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
 
 -- If TZ is not set or for some reason os.date() is returning UTC
 -- you can add the timezone offset manually like:

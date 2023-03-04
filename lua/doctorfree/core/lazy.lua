@@ -4,22 +4,34 @@ if not vim.loop.fs_stat(lazypath) then
     "git",
     "clone",
     "--filter=blob:none",
+    "--single-branch",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
     lazypath,
   })
 end
-vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+vim.opt.runtimepath:prepend(vim.env.LAZY or lazypath)
 
 -- load lazy
+-- require("lazy").setup("plugins", {
 require("lazy").setup({
-  spec = "doctorfree.core.resources",
+  spec = "doctorfree.plugins",
+  -- defaults = { lazy = true },
   defaults = {
     lazy = false,
     -- version = false, -- always use the latest git commit
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "monokai-pro", "habamax" } },
+  install = {
+    colorscheme = { "monokai-pro", "habamax" },
+    -- install missing plugins on startup. This doesn't increase startup time.
+    missing = false,
+  },
+  change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = false,
+    notify = true, -- get a notification when changes are found
+  },
+  debug = false,
   checker = { enabled = false },
   performance = {
     rtp = {
