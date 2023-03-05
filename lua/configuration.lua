@@ -35,6 +35,8 @@ M.list = false
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 -- Noice heavily changes the Neovim UI ...
 M.enable_noice = false
+-- Enable the wilder plugin
+M.enable_wilder = true
 -- Enable/disable tabline or winbar or both
 -- Disable tabline with nvim-navic location
 M.enable_tabline = true

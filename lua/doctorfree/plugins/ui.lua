@@ -28,6 +28,29 @@ if settings.enable_alpha then
   }
 end
 
+local wilder_type = {}
+if settings.enable_wilder then
+  wilder_type = {
+    { 'romgrk/fzy-lua-native', lazy = true },
+    {
+      'gelguy/wilder.nvim',
+      dependencies = {
+        { 'romgrk/fzy-lua-native' },
+      },
+      lazy = true,
+      build = function()
+      --   vim.cmd([[packadd wilder.nvim]])
+        vim.cmd([[silent UpdateRemotePlugins]])
+      end,
+      -- build = ':UpdateRemotePlugins',
+      event = { 'CmdwinEnter', 'CmdlineEnter' },
+      config = function()
+        require("doctorfree.config.wilder")
+      end
+    }
+  }
+end
+
 return {
   {
     "rcarriga/nvim-notify",
@@ -302,4 +325,7 @@ return {
       },
     },
   },
+
+  wilder_type
+
 }
