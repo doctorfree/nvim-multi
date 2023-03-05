@@ -16,7 +16,7 @@ local function load(name)
   })
 end
 
-require("doctorfree.util").lazy_notify()
+require("utils.utils").lazy_notify()
 load("options")
 
 -- load options here, before lazy init while sourcing plugin modules

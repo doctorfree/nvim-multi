@@ -1,4 +1,5 @@
 local settings = require('configuration')
+
 local dashboard_type = {
   "glepnir/dashboard-nvim",
   event = "VimEnter",
@@ -10,9 +11,20 @@ local dashboard_type = {
 
 if settings.enable_alpha then
   dashboard_type = {
-    "goolord/alpha-nvim",
-    event = "VimEnter",
-    config = function() require("doctorfree.config.alpha.alpha") end,
+    {
+      "goolord/alpha-nvim",
+      event = "VimEnter",
+      config = function() require("doctorfree.config.alpha.alpha") end,
+    },
+    {
+      "folke/tokyonight.nvim",
+      lazy = false,
+      priority = 1000,
+      branch = "main",
+      config = function()
+        require("doctorfree.themes.tokyonight")
+      end,
+    }
   }
 end
 
@@ -147,8 +159,8 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
           "help",
-          "alpha",
           "dashboard",
+          "alpha",
           "neo-tree",
           "Trouble",
           "lazy",
@@ -204,6 +216,11 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
+  },
+
+  {
+    'doctorfree/SetColorSchemes.vim',
+    lazy = false,
   },
 
   {

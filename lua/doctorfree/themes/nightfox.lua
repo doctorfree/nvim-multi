@@ -27,4 +27,6 @@ require("nightfox").setup({
 })
 
 -- setup must be called before loading
-vim.cmd("colorscheme carbonfox")
+if settings.theme == "nightfox" then
+  vim.cmd("colorscheme carbonfox")
+end

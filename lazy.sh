@@ -4,6 +4,6 @@
 #
 # Usage: lazy.sh <command>
 #
-# Example: lazy.sh install
+# Example: ./lazy.sh install
 
 nvim --headless "+Lazy! $*" +qa

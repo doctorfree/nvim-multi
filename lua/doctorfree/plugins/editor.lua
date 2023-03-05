@@ -19,44 +19,6 @@ return {
   },
 
   {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    version = false, -- telescope did only one release, so use HEAD for now
-    config = function() require("doctorfree.config.telescope") end,
-  },
-
-  { 'crispgm/telescope-heading.nvim' },
-
-  { 'nvim-telescope/telescope-symbols.nvim' },
-
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons"
-    }
-  },
-
-  { 'nvim-telescope/telescope-ui-select.nvim' },
-
-  { 'ptethng/telescope-makefile' },
-
-  { 'jvgrootveld/telescope-zoxide' },
-
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
-  },
-
-  { 'dharmx/telescope-media.nvim' },
-
-  {
     "folke/which-key.nvim",
     -- opts = {}
     config = function()

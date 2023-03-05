@@ -8,12 +8,12 @@ local icons = require("utils.icons")
 telescope.setup({
   extensions = {
     -- do we need this? For what?
-    fzf = {
-      fuzzy = true, -- false will only do exact matching
-      override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case", -- or "ignore_case" or "respect_case" or "smart_case"
-    },
+    -- fzf = {
+    --   fuzzy = true, -- false will only do exact matching
+    --   override_generic_sorter = true, -- override the generic sorter
+    --   override_file_sorter = true, -- override the file sorter
+    --   case_mode = "smart_case", -- or "ignore_case" or "respect_case" or "smart_case"
+    -- },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({}),
     },
@@ -108,21 +108,14 @@ telescope.setup({
       },
     },
     prompt_prefix = table.concat({ icons.arrows.ChevronRight, " " }),
---  prompt_prefix = "   ",
     selection_caret = icons.arrows.CurvedArrowRight,
---  selection_caret = "  ",
     entry_prefix = "  ",
---  entry_prefix = "  ",
     multi_icon = icons.arrows.Diamond,
     initial_mode = "insert",
---  initial_mode = "insert",
     scroll_strategy = "cycle",
     selection_strategy = "reset",
---  selection_strategy = "reset",
     sorting_strategy = "descending",
---  sorting_strategy = "ascending",
     layout_strategy = "vertical",
---  layout_strategy = "horizontal",
     layout_config = {
       width = 0.95,
       height = 0.85,
@@ -153,7 +146,7 @@ telescope.setup({
   },
 })
 
-telescope.load_extension('fzf')
+-- telescope.load_extension('fzf')
 telescope.load_extension('projects')
 telescope.load_extension('zoxide')
 telescope.load_extension('heading')

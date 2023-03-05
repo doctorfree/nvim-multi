@@ -64,7 +64,7 @@ lualine.setup {
     --section_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
-      'neo-tree', 'NvimTree', 'Outline', 'toggleterm', 'dap-repl',
+      'alpha', 'neo-tree', 'NvimTree', 'Outline', 'toggleterm', 'dap-repl',
       'packer', 'Trouble', 'dapui_scopes', 'dapui_breakpoints', 'dapui_stacks',
       'dapui_watches', 'dap-terminal', 'dapui_console', 'dashboard', 'help',
       'lazy', 'lir', 'neogitstatus', 'oil', 'spectre_panel', 'startify'
@@ -75,7 +75,17 @@ lualine.setup {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', 'diagnostics' },
     lualine_c = {
-      { 'filename', path = 1, color = { bg = 'NONE' } },
+      { 'filename',
+        path = 3,
+        filetype_names = {
+          TelescopePrompt = 'Telescope',
+          dashboard = 'Dashboard',
+          packer = 'Packer',
+          fzf = 'FZF',
+          alpha = 'Alpha',
+        }
+      },
+      { navic.get_location, cond = navic.is_available },
     },
     lualine_x = { fmt_stat, 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },

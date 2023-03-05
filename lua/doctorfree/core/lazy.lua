@@ -11,6 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(vim.env.LAZY or lazypath)
 
+local settings = require("configuration")
+
 -- load lazy
 -- require("lazy").setup("plugins", {
 require("lazy").setup({
@@ -22,9 +24,15 @@ require("lazy").setup({
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = {
-    colorscheme = { "monokai-pro", "habamax" },
+    colorscheme = { settings.theme, "habamax" },
     -- install missing plugins on startup. This doesn't increase startup time.
-    missing = false,
+    missing = true,
+  },
+  ui = {
+    -- a number <1 is a percentage., >1 is a fixed size
+    size = { width = 0.9, height = 0.5 },
+    -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
+    border = "rounded",
   },
   change_detection = {
     -- automatically check for config file changes and reload the ui

@@ -8,7 +8,13 @@ M.config = "doctorfree"
 -- refer to the relevant themes settings file in:
 --   ~/.config/nvim/lua/*/plugins/themes/
 -- for different styles and settings for your selected theme.
+-- M.theme = "monokai-pro"
+-- M.theme = "nightfox"
+-- M.theme = "kanagawa"
+-- M.theme = "catppuccin"
 M.theme = "tokyonight"
+-- M.theme = "tundra"
+
 -- enable transparency if the theme supports it
 M.enable_transparent = true
 -- Toggle global status line

@@ -88,4 +88,6 @@ catppuccin.setup({
     fidget = false,
   },
 })
-vim.cmd([[colorscheme catppuccin-frappe]])
+if settings.theme == "catppuccin" then
+  vim.cmd([[colorscheme catppuccin-frappe]])
+end

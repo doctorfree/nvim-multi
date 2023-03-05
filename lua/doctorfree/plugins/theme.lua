@@ -1,53 +1,55 @@
-local settings = require("configuration")
+-- Currently supported themes:
+--   nightfox, tundra, tokyonight, catppuccin, kanagawa, monokai-pro
 
-if settings.theme == "nightfox" then
-  return {
+return {
+  {
     "EdenEast/nightfox.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("doctorfree.plugins.themes.nightfox")
+      require("doctorfree.themes.nightfox")
     end,
-  }
-elseif settings.theme == "tundra" then
-  return {
+  },
+  {
     "sam4llis/nvim-tundra",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("doctorfree.plugins.themes.tundra")
+      require("doctorfree.themes.tundra")
     end,
-  }
-elseif settings.theme == "tokyonight" then
-  return {
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
+    priority = 1000,
     branch = "main",
     config = function()
-      require("doctorfree.plugins.themes.tokyonight")
+      require("doctorfree.themes.tokyonight")
     end,
-  }
-elseif settings.theme == "kanagawa" then
-  return {
+  },
+  {
     "rebelot/kanagawa.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("lua.doctorfree.plugins.themes.kanagawa")
+      require("doctorfree.themes.kanagawa")
     end,
-  }
-elseif settings.theme == "monokai-pro" then
-  return {
+  },
+  {
     "loctvl842/monokai-pro.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("lua.doctorfree.plugins.themes.monokai-pro")
+      require("doctorfree.themes.monokai-pro")
     end,
-  }
-else
-  return {
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("doctorfree.plugins.themes.catppuccin")
+      require("doctorfree.themes.catppuccin")
     end,
   }
-end
+}

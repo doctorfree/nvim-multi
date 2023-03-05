@@ -9,7 +9,7 @@ return {
     },
     config = function()
       -- special attach lsp
-      require("doctorfree.util").on_attach(function(client, buffer)
+      require("utils.utils").on_attach(function(client, buffer)
         require("doctorfree.config.lsp.keymaps").on_attach(client, buffer)
         require("doctorfree.config.lsp.inlayhints").on_attach(client, buffer)
         require("doctorfree.config.lsp.gitsigns").on_attach(client, buffer)

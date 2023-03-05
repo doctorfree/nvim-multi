@@ -2,6 +2,7 @@ local utils = require('utils.functions')
 
 vim.g.pymode = 1
 vim.g.pymode_warnings = 1
+
 vim.g.mycolorschemes = {
   'kanagawa',
   'tokyonight',
@@ -10,9 +11,9 @@ vim.g.mycolorschemes = {
   'tundra',
   'catppuccin'
 }
-
 -- Set this to 1 if using Airline, 0 with Lualine
 vim.g.setairlinetheme = 0
+
 vim.g.is_posix = 1     -- Vim's default is Bourne shell, bring it up to the 90s
 vim.g.netrw_banner = 0 -- Do not show Netrw help banner
 vim.g.signify_sign_add = '│'
