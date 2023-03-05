@@ -55,6 +55,7 @@
   "renamer.nvim": { "branch": "master", "commit": "1614d466df53899f11dd5395eaac3c09a275c384" },
   "rnvimr": { "branch": "main", "commit": "4f4fbd29e2e0869bea9a8376e06fca4331de60c9" },
   "statuscol.nvim": { "branch": "main", "commit": "0d8e1f56238f42aeffb2040be8ae8b3eb750a44d" },
+  "tabline.nvim": { "branch": "main", "commit": "5d76dc8616b4b7b892229cc05cd0f4cd0200077a" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "61b3769065131129716974f7fb63f82ee409bd80" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "580b6c48651cabb63455e97d7e131ed557b8c7e2" },
   "telescope-heading.nvim": { "branch": "main", "commit": "d79c6dbbabe1e03618ee6776ae30f18a645a67a9" },

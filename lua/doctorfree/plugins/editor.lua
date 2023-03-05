@@ -22,27 +22,6 @@ return {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     version = false, -- telescope did only one release, so use HEAD for now
---  opts = {
---    defaults = {
---      prompt_prefix = "  ",
---      selection_caret = "❯ ",
---      borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
---      sorting_strategy = "ascending",
---      layout_config = {
---        horizontal = {
---          prompt_position = "top",
---          preview_width = 0.55,
---          results_width = 0.8,
---        },
---        vertical = {
---          mirror = false,
---        },
---        width = 0.87,
---        height = 0.80,
---        preview_cutoff = 120,
---      },
---    },
---  },
     config = function() require("doctorfree.config.telescope") end,
   },
 

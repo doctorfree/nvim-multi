@@ -8,7 +8,7 @@ if not path_ok then
   return
 end
 
-local settings = require('settings')
+local settings = require('configuration')
 
 local dashboard = require("alpha.themes.dashboard")
 local nvim_web_devicons = require("nvim-web-devicons")

@@ -1,4 +1,4 @@
-local settings = require('settings')
+local settings = require('configuration')
 local options = {
   backup = false, -- creates a backup file
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
@@ -83,3 +83,15 @@ if vim.g.neovide then
   vim.opt.guifont = "Cascadia Code:h10" -- the font used in graphical neovim applications
   vim.g.neovide_scale_factor = 1
 end
+
+-- override with settings in user folder
+require('doctorfree.globals')
+
+-- Global Keymappings
+require('doctorfree.mappings')
+
+-- All non plugin related (vim) options
+require('doctorfree.options')
+
+-- Vim autocommands/autogroups
+require('doctorfree.autocmd')

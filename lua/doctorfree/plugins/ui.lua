@@ -1,4 +1,4 @@
-local settings = require('settings')
+local settings = require('configuration')
 local dashboard_type = {
   "glepnir/dashboard-nvim",
   event = "VimEnter",
@@ -84,7 +84,15 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     config = function()
-      require("doctorfree.config.lualine.init").load("monokai-pro")
+      require("doctorfree.config.lualine")
+    end,
+  },
+
+  {
+    "kdheepak/tabline.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("doctorfree.config.tabline")
     end,
   },
 
@@ -183,7 +191,7 @@ return {
         NormalFloat = { link = "ToggleTerm" },
       },
       winbar = {
-        enabled = true,
+        enabled = settings.enable_winbar,
         name_formatter = function(term)
           return string.format("%d:%s", term.id, term:_display_name())
         end,
@@ -218,6 +226,14 @@ return {
         gitsigns = true,
       },
     },
+  },
+
+  {
+    "SmiteshP/nvim-navic",
+    lazy = true,
+    config = function()
+      require("doctorfree.config.navic")
+    end,
   },
 
   {

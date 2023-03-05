@@ -1,4 +1,4 @@
-local settings = require("settings")
+local settings = require("configuration")
 
 require("nvim-tundra").setup({
   transparent_background = settings.enable_transparent,

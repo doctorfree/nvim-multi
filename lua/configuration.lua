@@ -3,11 +3,14 @@ local M = {}
 -- Configuration
 -- Must be one of 'tvl' 'doctorfree'
 M.config = "doctorfree"
--- theme: nightfox, tokyonight, tundra, kanagawa; default is catppuccin
--- refer to the themes settings file for different styles
+
+-- theme: monokai-pro, nightfox, tokyonight, kanagawa, catppuccin, tundra
+-- refer to the relevant themes settings file in:
+--   ~/.config/nvim/lua/*/plugins/themes/
+-- for different styles and settings for your selected theme.
 M.theme = "tokyonight"
 -- enable transparency if the theme supports it
-M.enable_transparent = false
+M.enable_transparent = true
 -- Toggle global status line
 M.global_statusline = true
 -- use rg instead of grep
@@ -28,44 +31,21 @@ M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 M.enable_noice = false
 -- Enable/disable tabline or winbar or both
 -- Disable tabline with nvim-navic location
-M.disable_tabline = false
+M.enable_tabline = true
 -- Disable winbar with nvim-navic location
-M.disable_winbar = true
+M.enable_winbar = false
 -- Enable the Alpha dashboard
 M.enable_alpha = true
 -- Number of recent files shown in dashboard
 -- 0 disables showing recent files
 M.dashboard_recent_files = 5
 -- disable the header of the dashboard
-M.disable_dashboard_header = false
+M.disable_dashboard_header = true
 -- disable quick links of the dashboard
 M.disable_dashboard_quick_links = false
 -- treesitter parsers to be installed
 -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-M.treesitter_ensure_installed = {
-  "bash",
-  "cmake",
-  "css",
-  "dockerfile",
-  "go",
-  "hcl",
-  "html",
-  "java",
-  "javascript",
-  "json",
-  "kotlin",
-  "ledger",
-  "lua",
-  "markdown",
-  "markdown_inline",
-  "query",
-  "python",
-  "regex",
-  "terraform",
-  "toml",
-  "vim",
-  "yaml",
-}
+M.treesitter_ensure_installed = { "bash", "c", "cpp", "cmake", "comment", "css", "go", "help", "html", "java", "javascript", "typescript", "json", "lua", "markdown", "markdown_inline", "query", "python", "regex", "rust", "toml", "tsx", "vim", "yaml", "vue" }
 
 -- enable greping in hidden files
 M.telescope_grep_hidden = true

@@ -14,8 +14,8 @@ neotree.setup({
     "diagnostics",
   },
   source_selector = {
-    winbar = true,
-    statusline = false, -- toggle to show selector on statusline
+    winbar = false,
+    statusline = true, -- toggle to show selector on statusline
     content_layout = "center",
     tabs_layout = "equal",
     tab_labels = {

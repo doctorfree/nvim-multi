@@ -1,4 +1,4 @@
-local settings = require("settings")
+local settings = require("configuration")
 
 -- Default options
 require("nightfox").setup({
