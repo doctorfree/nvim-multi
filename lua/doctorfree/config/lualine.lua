@@ -85,7 +85,7 @@ lualine.setup {
           alpha = 'Alpha',
         }
       },
-      { navic.get_location, cond = navic.is_available },
+      -- { navic.get_location, cond = navic.is_available },
     },
     lualine_x = { fmt_stat, 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },

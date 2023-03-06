@@ -11,8 +11,8 @@ M.config = "doctorfree"
 -- M.theme = "monokai-pro"
 -- M.theme = "nightfox"
 -- M.theme = "kanagawa"
--- M.theme = "catppuccin"
-M.theme = "tokyonight"
+M.theme = "catppuccin"
+-- M.theme = "tokyonight"
 -- M.theme = "tundra"
 
 -- enable transparency if the theme supports it
@@ -33,6 +33,8 @@ M.showtabline = 1
 M.list = false
 -- which list chars to schow
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
+-- neo-tree or nvim-tree, false will enable nvim-tree
+M.enable_neotree = false
 -- Noice heavily changes the Neovim UI ...
 M.enable_noice = false
 -- Enable the wilder plugin

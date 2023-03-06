@@ -44,4 +44,20 @@ require("tokyonight").setup({
 if settings.theme == "tokyonight" then
   vim.cmd([[colorscheme tokyonight]])
   vim.api.nvim_set_hl(0, "MiniJump", { fg = "#FFFFFF", bg = "#ff00a0" })
+  if settings.enable_neotree then
+    local colors = require('tokyonight.colors').setup()
+    vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = colors.blue })
+    vim.api.nvim_set_hl(0, "NeoTreeRootName", { fg = colors.fg, bold = true })
+    vim.api.nvim_set_hl(0, "NeoTreeFileName", { fg = colors.fg })
+    vim.api.nvim_set_hl(0, "NeoTreeFileIcon", { fg = colors.fg })
+    vim.api.nvim_set_hl(0, "NeoTreeFileNameOpened", { fg = colors.green })
+    vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { fg = colors.blue_3 })
+    vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { fg = colors.green })
+    vim.api.nvim_set_hl(0, "NeoTreeGitConflict", { fg = colors.red })
+    vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = colors.orange })
+    vim.api.nvim_set_hl(0, "NeoTreeGitUntracked", { fg = colors.yellow })
+    vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = colors.blue_2 })
+    vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = colors.blue_2 })
+    vim.api.nvim_set_hl(0, "NeoTreeSymbolicLinkTarget", { fg = colors.cyan })
+  end
 end

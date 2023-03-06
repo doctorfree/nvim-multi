@@ -1,5 +1,17 @@
-return {
-  {
+local settings = require("configuration")
+
+local treetype = {
+  'nvim-tree/nvim-tree.lua',
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
+  config = function()
+    require("doctorfree.config.nvim-tree")
+  end
+}
+
+if settings.enable_neotree then
+  treetype = {
     "loctvl842/neo-tree.nvim",
     cmd = "Neotree",
     keys = {
@@ -25,7 +37,12 @@ return {
     config = function()
       require("doctorfree.config.neo-tree")
     end,
-  },
+  }
+end
+
+return {
+
+  treetype,
 
   {
     "nvim-telescope/telescope.nvim",
