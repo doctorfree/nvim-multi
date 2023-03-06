@@ -9,8 +9,8 @@ M.config = "doctorfree"
 --   ~/.config/nvim/lua/*/plugins/themes/
 -- for different styles and settings for your selected theme.
 -- M.theme = "monokai-pro"
--- M.theme = "nightfox"
-M.theme = "kanagawa"
+M.theme = "nightfox"
+-- M.theme = "kanagawa"
 -- M.theme = "catppuccin"
 -- M.theme = "tokyonight"
 -- M.theme = "tundra"
@@ -34,11 +34,13 @@ M.list = true
 -- which list chars to schow
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 -- neo-tree or nvim-tree, false will enable nvim-tree
-M.enable_neotree = false
+M.enable_neotree = true
 -- Noice heavily changes the Neovim UI ...
 M.enable_noice = false
+-- Enable the newer rainbow treesitter delimiter highlighting
+M.enable_rainbow2 = false
 -- Enable the wilder plugin
-M.enable_wilder = true
+M.enable_wilder = false
 -- Enable/disable tabline or winbar or both
 -- Disable tabline with nvim-navic location
 M.enable_tabline = true
@@ -50,7 +52,7 @@ M.enable_alpha = true
 -- 0 disables showing recent files
 M.dashboard_recent_files = 5
 -- disable the header of the dashboard
-M.disable_dashboard_header = true
+M.disable_dashboard_header = false
 -- disable quick links of the dashboard
 M.disable_dashboard_quick_links = false
 -- treesitter parsers to be installed

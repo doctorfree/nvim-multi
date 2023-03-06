@@ -71,7 +71,7 @@ catppuccin.setup({
       enabled = true,
       colored_indent_levels = false,
     },
-    dashboard = false,
+    dashboard = true,
     neogit = true,
     vim_sneak = false,
     fern = false,
@@ -79,7 +79,7 @@ catppuccin.setup({
     bufferline = false,
     markdown = true,
     lightspeed = false,
-    ts_rainbow = false,
+    ts_rainbow = true,
     hop = false,
     notify = true,
     telekasten = false,
@@ -90,4 +90,11 @@ catppuccin.setup({
 })
 if settings.theme == "catppuccin" then
   vim.cmd([[colorscheme catppuccin-frappe]])
+  if settings.enable_alpha then
+    vim.api.nvim_set_hl(0, "AlphaHeader", { link = "DashboardHeader" })
+    vim.api.nvim_set_hl(0, "AlphaHeaderLabel", { link = "DashboardHeader" })
+    vim.api.nvim_set_hl(0, "AlphaButtons", { link = "DashboardCenter" })
+    vim.api.nvim_set_hl(0, "AlphaShortcut", { link = "DashboardShortcut" })
+    vim.api.nvim_set_hl(0, "AlphaFooter", { link = "DashboardFooter" })
+  end
 end

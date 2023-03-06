@@ -318,28 +318,15 @@ if settings.disable_dashboard_quick_links == true then
   layout[4] = nil
 end
 
-local colors = require('tokyonight.colors').setup()
 local opts = {
   layout = layout,
   opts = {
     margin = 4,
     setup = function()
---    require("nvim-web-devicons").setup{
---      enabled = true,
---      highlight = true,
---    }
-      vim.api.nvim_set_hl(0, "AlphaHeader", { fg = colors.blue })
-      vim.api.nvim_set_hl(0, "AlphaHeaderLabel", { fg = colors.orange })
-      vim.api.nvim_set_hl(0, "AlphaButtons", { fg = colors.teal })
-      vim.api.nvim_set_hl(0, "AlphaShortcut", { fg = colors.cyan })
-      vim.api.nvim_set_hl(0, "AlphaFooter", { fg = colors.purple, italic = true })
-      vim.api.nvim_set_hl(0, "SpecialComment", { fg = colors.green, italic = true })
-      vim.api.nvim_set_hl(0, "Comment", { fg = colors.yellow })
-      vim.api.nvim_set_hl(0, "DashboardHeader", { fg = colors.blue })
-      vim.api.nvim_set_hl(0, "DashboardHeaderLabel", { fg = colors.orange })
-      vim.api.nvim_set_hl(0, "DashboardButtons", { fg = colors.cyan })
-      vim.api.nvim_set_hl(0, "DashboardShortcut", { fg = colors.orange })
-      vim.api.nvim_set_hl(0, "DashboardFooter", { fg = colors.yellow, italic = true })
+      require("nvim-web-devicons").setup{
+        enabled = true,
+        highlight = true,
+      }
     end
   },
 }

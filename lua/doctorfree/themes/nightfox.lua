@@ -29,4 +29,11 @@ require("nightfox").setup({
 -- setup must be called before loading
 if settings.theme == "nightfox" then
   vim.cmd("colorscheme carbonfox")
+  if settings.enable_alpha then
+    vim.api.nvim_set_hl(0, "AlphaHeader", { link = "DashboardHeader" })
+    vim.api.nvim_set_hl(0, "AlphaHeaderLabel", { link = "DashboardHeader" })
+    vim.api.nvim_set_hl(0, "AlphaButtons", { link = "DashboardCenter" })
+    vim.api.nvim_set_hl(0, "AlphaShortcut", { link = "DashboardShortcut" })
+    vim.api.nvim_set_hl(0, "AlphaFooter", { link = "DashboardFooter" })
+  end
 end

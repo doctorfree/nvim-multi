@@ -25,14 +25,39 @@ require("monokai-pro").setup({
       underline_selected = false,
       underline_visible = false,
     },
-    indent_blankline = {
-      context_highlight = "default", -- default | pro
-      context_start_underline = false,
-    },
+    -- indent_blankline = {
+    --   context_highlight = "default", -- default | pro
+    --   context_start_underline = false,
+    -- },
+    "alpha",
+    "cmp",
+    "dashboard",
+    "gitsign",
+    "illuminate",
+    "lazy",
+    "lsp",
+    "mason",
+    "neo-tree",
+    "noice",
+    "notify",
+    "nvim-navic",
+    "nvim-tree",
+    "nvim-treesitter",
+    "renamer",
+    "scrollbar",
+    "telescope",
+    "toggleterm",
+    "which-key",
+    "wilder"
   },
   override = function(c) end,
 })
 
 if settings.theme == "monokai-pro" then
   vim.cmd("colorscheme monokai-pro")
+  if settings.enable_alpha then
+    vim.api.nvim_set_hl(0, "AlphaHeaderLabel", { link = "AlphaHeader" })
+    vim.api.nvim_set_hl(0, "AlphaButtons", { link = "AlphaButton" })
+    vim.api.nvim_set_hl(0, "AlphaShortcut", { link = "DashboardShortcut" })
+  end
 end

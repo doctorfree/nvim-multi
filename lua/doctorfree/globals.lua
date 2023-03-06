@@ -2,6 +2,7 @@ local utils = require('utils.functions')
 
 vim.g.pymode = 1
 vim.g.pymode_warnings = 1
+vim.g.loaded_perl_provider = 0
 
 vim.g.mycolorschemes = {
   'kanagawa',

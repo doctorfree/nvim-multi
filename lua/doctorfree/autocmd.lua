@@ -117,6 +117,10 @@ api.nvim_create_autocmd(
   }
 )
 
+-- Highlight groups
+-- autocmd ColorSchemePre MyTheme highlight link TSRainbow MyThemeRed
+-- autocmd ColorSchemePre MyTheme highlight link TSRainbow MyThemeYellow
+
 -- Filetype-Specific Configurations
 
 -- CSS, HTML, LUA, JS, TS, XML, Jinja, YAML

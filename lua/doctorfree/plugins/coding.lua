@@ -96,6 +96,15 @@ return {
     "echasnovski/mini.comment",
     event = "VeryLazy",
     opts = {
+      mappings = {
+        -- Toggle comment (like `gcip` - comment inner paragraph) for both
+        -- Normal and Visual modes
+        comment = 'mc',
+        -- Toggle comment on current line
+        comment_line = 'mcc',
+        -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+        textobject = 'mc',
+      },
       hooks = {
         pre = function()
           require("ts_context_commentstring.internal").update_commentstring({})

@@ -1,7 +1,15 @@
 local settings = require("configuration")
 
-require("nvim-tundra").setup({
+require('nvim-tundra').setup({
   transparent_background = settings.enable_transparent,
+  dim_inactive_windows = {
+    enabled = false,
+    color = nil,
+  },
+  sidebars = {
+    enabled = true,
+    color = nil,
+  },
   editor = {
     search = {},
     substitute = {},
@@ -11,6 +19,7 @@ require("nvim-tundra").setup({
     comments = { bold = true, italic = true },
     conditionals = {},
     constants = { bold = true },
+    fields = {},
     functions = {},
     keywords = {},
     loops = {},
@@ -29,11 +38,13 @@ require("nvim-tundra").setup({
   plugins = {
     lsp = true,
     treesitter = true,
+    telescope = true,
+    nvimtree = true,
     cmp = true,
     context = true,
     dbui = true,
     gitsigns = true,
-    telescope = true,
+    neogit = true,
   },
   overwrite = {
     colors = {},
@@ -42,5 +53,6 @@ require("nvim-tundra").setup({
 })
 
 if settings.theme == "tundra" then
-  vim.cmd("colorscheme tundra")
+  vim.opt.background = 'dark'
+  vim.cmd('colorscheme tundra')
 end

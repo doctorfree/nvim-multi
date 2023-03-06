@@ -26,7 +26,28 @@ require('kanagawa').setup({
     },
 })
 
--- setup must be called before loading
 if settings.theme == "kanagawa" then
   vim.cmd("colorscheme kanagawa")
+  if settings.enable_neotree then
+    vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { link = "DashboardIcon" })
+    vim.api.nvim_set_hl(0, "NeoTreeRootName", { link = "NvimTreeRootFolder" })
+    vim.api.nvim_set_hl(0, "NeoTreeFileName", { link = "NvimTreeExecFile" })
+    vim.api.nvim_set_hl(0, "NeoTreeFileIcon", { link = "DashboardIcon" })
+    vim.api.nvim_set_hl(0, "NeoTreeFileNameOpened", { link = "NvimTreeOpenedFile" })
+    vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { link = "NvimTreeIndentMarker" })
+    vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { link = "NvimTreeGitNew" })
+    vim.api.nvim_set_hl(0, "NeoTreeGitConflict", { link = "NvimTreeGitDirty" })
+    vim.api.nvim_set_hl(0, "NeoTreeGitModified", { link = "NvimTreeGitStaged" })
+    vim.api.nvim_set_hl(0, "NeoTreeGitUntracked", { link = "NvimTreeGitDeleted" })
+    vim.api.nvim_set_hl(0, "NeoTreeNormal", { link = "NvimTreeNormal" })
+    vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { link = "NvimTreeNormalNC" })
+    vim.api.nvim_set_hl(0, "NeoTreeSymbolicLinkTarget", { link = "NvimTreeSymlink" })
+  end
+  if settings.enable_alpha then
+    vim.api.nvim_set_hl(0, "AlphaHeader", { link = "DashboardIcon" })
+    vim.api.nvim_set_hl(0, "AlphaHeaderLabel", { link = "DashboardHeaderLabel" })
+    vim.api.nvim_set_hl(0, "AlphaButtons", { link = "DashboardButtons" })
+    vim.api.nvim_set_hl(0, "AlphaShortcut", { link = "DashboardShortcut" })
+    vim.api.nvim_set_hl(0, "AlphaFooter", { link = "DashboardFooter" })
+  end
 end

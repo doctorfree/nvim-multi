@@ -1,3 +1,42 @@
+local settings = require("configuration")
+
+local ensure_installed_cfg = {}
+if settings.treesitter_ensure_installed == nil then
+  ensure_installed_cfg = {
+    "bash", "help", "html", "javascript", "json", "lua", "vim", "yaml", "php",
+    "markdown", "markdown_inline", "python", "query", "regex", "tsx", "typescript"
+  }
+else
+  ensure_installed_cfg = settings.treesitter_ensure_installed
+end
+
+local rainbow_plugin = "mrjones2014/nvim-ts-rainbow"
+local rainbow_cfg = {
+  enable = true,
+  extended_mode = false,
+  colors = {
+    "#ff6188",
+    "#fc9867",
+    "#ffd866",
+    "#a9dc76",
+    "#78dce8",
+    "#ab9df2",
+  },
+  disable = { "html" },
+}
+if settings.enable_rainbow2 then
+  rainbow_plugin = "HiPhish/nvim-ts-rainbow2"
+  rainbow_cfg = {
+    enable = true,
+    -- list of languages you want to disable the plugin for
+    disable = { "jsx", "cpp" },
+    -- Which query to use for finding delimiters
+    query = 'rainbow-parens',
+    -- Highlight the entire buffer all at once
+    strategy = require 'ts-rainbow.strategy.global',
+  }
+end
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -5,40 +44,11 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-      ensure_installed = {
-        "bash",
-        "help",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "regex",
-        "tsx",
-        "typescript",
-        "vim",
-        "yaml",
-        "php",
-      },
+      ensure_installed = ensure_installed_cfg,
       highlight = { enable = true },
       indent = { enable = true, disable = { "yaml", "python", "html" } },
       context_commentstring = { enable = true },
-      rainbow = {
-        enable = true,
-        extended_mode = false,
-        colors = {
-          "#ff6188",
-          "#fc9867",
-          "#ffd866",
-          "#a9dc76",
-          "#78dce8",
-          "#ab9df2",
-        },
-        disable = { "html" },
-      },
+      rainbow = rainbow_cfg,
       playground = {
         enable = true,
         disable = {},
@@ -72,7 +82,7 @@ return {
   { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
 
   {
-    "p00f/nvim-ts-rainbow",
+    rainbow_plugin,
     event = { "BufReadPost" },
   },
 }

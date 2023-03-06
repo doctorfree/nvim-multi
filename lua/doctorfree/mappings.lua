@@ -1,4 +1,32 @@
+local settings = require("configuration")
 local map = vim.keymap.set
+
+local treereg = {}
+if settings.enable_neotree then
+  map("n", "<leader>T", ":Neotree toggle<CR>")
+  treereg = {
+    name = "Files",
+    b = { "<cmd>Telescope file_browser grouped=true<cr>", "File browser" },
+    e = { "<cmd>Neotree<cr>", "Open Neotree" },
+    f = { "<cmd>" .. require("utils.functions").project_files() .. "<cr>", "Find File" },
+    p = { "<cmd>Neotree reveal toggle<cr>", "Toggle Neotree" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    s = { "<cmd>w<cr>", "Save Buffer" },
+    z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
+  }
+else
+  map("n", "<leader>T", ":NvimTreeFindFileToggle<CR>")
+  treereg = {
+    name = "Files",
+    b = { "<cmd>Telescope file_browser grouped=true<cr>", "File browser" },
+    e = { "<cmd>NvimTreeOpen<cr>", "Open NvimTree" },
+    f = { "<cmd>" .. require("utils.functions").project_files() .. "<cr>", "Find File" },
+    p = { "<cmd>NvimTreeFindFileToggle<cr>", "Toggle NvimTree" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    s = { "<cmd>w<cr>", "Save Buffer" },
+    z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
+  }
+end
 
 -- Remap for dealing with visual line wraps
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
@@ -72,16 +100,15 @@ map("t", "<C-w>", "<Esc><C-w>")
 -- Custom Mappings (lua custom mappings are within individual lua config files)
 --
 -- Core
--- map("n", "<leader>q", ":NvimTreeFindFileToggle<CR>")
-map("n", [[\]], "<leader>q")
+map("n", [[\]], "<leader>t")
 map("n", "<leader>r", ":so ~/.config/nvim/init.vim<CR>")
 map("x", "<leader>a", "gaip*")
 map("n", "<leader>a", "gaip*")
-map("n", "<leader>h", ":RainbowParentheses!!<CR>")
+-- map("n", "<leader>h", ":RainbowParentheses!!<CR>")
 map("n", "<leader>j", ":set filetype=journal<CR>")
 -- nmap <leader>k :ColorToggle<CR>
-map("n", "<leader>l", ":Limelight!!<CR>")
-map("x", "<leader>l", ":Limelight!!<CR>")
+-- map("n", "<leader>l", ":Limelight!!<CR>")
+-- map("x", "<leader>l", ":Limelight!!<CR>")
 map("n", "<silent>", "<leader><leader> :noh<CR>")
 map("n", "<silent>", "<F12> :set invlist<CR>")
 map("n", "<Tab>", ":bnext<CR>")
@@ -104,6 +131,7 @@ map("n", "<leader>fc", "<cmd>Telescope colorscheme<cr>")
 map("n", "<leader>f/", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 
 local wk = require("which-key")
+local default_options = { silent = true }
 
 -- register non leader based mappings
 wk.register({
@@ -133,16 +161,7 @@ wk.register({
     },
     d = { "<cmd>Bdelete<cr>", "Close buffer" },
   },
-  f = {
-    name = "Files",
-    b = { "<cmd>Telescope file_browser grouped=true<cr>", "File browser" },
-    e = { "<cmd>Neotree<cr>", "Open Neotree" },
-    f = { "<cmd>" .. require("utils.functions").project_files() .. "<cr>", "Find File" },
-    p = { "<cmd>Neotree reveal toggle<cr>", "Toggle Neotree" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    s = { "<cmd>w<cr>", "Save Buffer" },
-    z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
-  },
+  f = treereg,
   m = {
     name = "Misc",
     C = { "<cmd>:CBcatalog<cr>", "Commentbox Catalog" },

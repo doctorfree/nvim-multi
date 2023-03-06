@@ -44,7 +44,7 @@ return {
     build = "deno task --quiet build:fast",
     keys = {
       {
-        "<leader>op",
+        "<leader>p",
         function()
           local peek = require("peek")
           if peek.is_open() then
@@ -61,7 +61,7 @@ return {
 
   {
     "moll/vim-bbye",
-    keys = { { "<leader>d", "<cmd>Bdelete!<cr>", desc = "Close Buffer" } },
+    keys = { { "<leader>D", "<cmd>Bdelete!<cr>", desc = "Close Buffer" } },
   },
 
   {
