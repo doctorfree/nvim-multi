@@ -47,6 +47,7 @@ return {
       ensure_installed = ensure_installed_cfg,
       highlight = { enable = true },
       indent = { enable = true, disable = { "yaml", "python", "html" } },
+      autopairs = { enable = true },
       context_commentstring = { enable = true },
       rainbow = rainbow_cfg,
       playground = {
