@@ -4,6 +4,7 @@ local dashboard_type = {
   "glepnir/dashboard-nvim",
   event = "VimEnter",
   dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  keys = { { "<leader>0", "<cmd>Dashboard<CR>", desc = "Dashboard" } },
   config = function()
     require("doctorfree.config.dashboard")
   end,
@@ -14,6 +15,7 @@ if settings.enable_alpha then
     {
       "goolord/alpha-nvim",
       event = "VimEnter",
+      keys = { { "<leader>a", "<cmd>Alpha<cr>", "Alpha" } },
       config = function() require("doctorfree.config.alpha.alpha") end,
     },
     {
@@ -56,7 +58,7 @@ return {
     "rcarriga/nvim-notify",
     keys = {
       {
-        "<leader>u",
+        "<leader>n",
         function()
           require("notify").dismiss({ silent = true, pending = true })
         end,
@@ -150,6 +152,7 @@ return {
         "NvimTree",
         "Trouble",
         "alpha",
+        "neo-tree",
       },
       buftype_exclude = {
         "terminal",
@@ -199,14 +202,47 @@ return {
 
   {
     "utilyre/barbecue.nvim",
+    branch = "fix/E36",
     lazy = false,
     dependencies = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      require("doctorfree.config.barbecue")
-    end,
+    opts = {
+      theme = "auto",
+      include_buftypes = { "" },
+      exclude_filetypes = { "gitcommit", "Trouble", "toggleterm" },
+      show_modified = false,
+      kinds = {
+        File = "", -- File
+        Module = "", -- Module
+        Namespace = "", -- Namespace
+        Package = "", -- Package
+        Class = "", -- Class
+        Method = "", -- Method
+        Property = "", -- Property
+        Field = "", -- Field
+        Constructor = "", -- Constructor
+        Enum = "", -- Enum
+        Interface = "", -- Interface
+        Function = "", -- Function
+        Variable = "", -- Variable
+        Constant = "", -- Constant
+        String = "", -- String
+        Number = "", -- Number
+        Boolean = "◩", -- Boolean
+        Array = "", -- Array
+        Object = "", -- Object
+        Key = "", -- Key
+        Null = "ﳠ", -- Null
+        EnumMember = "", -- EnumMember
+        Struct = "", -- Struct
+        Event = "", -- Event
+        Operator = "", -- Operator
+        TypeParameter = "", -- TypeParameter
+        Macro = "", -- Macro
+      },
+    },
   },
 
   {
@@ -260,6 +296,7 @@ return {
         "alpha",
         "lazy",
         "mason",
+        "DressingInput",
         "",
       },
       handlers = {
@@ -295,6 +332,7 @@ return {
       animation = { enable = true, duration = 150, fps = 60 },
       autowidth = { enable = true },
     },
+    keys = { { "<leader>m", "<cmd>WindowsMaximize<CR>", desc = "Zoom window" } },
     init = function()
       vim.o.winwidth = 30
       vim.o.winminwidth = 30
@@ -324,6 +362,31 @@ return {
         virtualtext = "■",
       },
     },
+  },
+
+  -- better vim.ui
+  {
+    "stevearc/dressing.nvim",
+    lazy = true,
+    opts = {
+      input = {
+        border = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" }, -- [ top top top - right - bottom bottom bottom - left ]
+        win_options = { winblend = 0 },
+      },
+      select = { telescope = require("utils.utils").telescope_theme("dropdown") },
+    },
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
   },
 
   wilder_type
