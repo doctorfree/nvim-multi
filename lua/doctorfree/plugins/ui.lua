@@ -30,6 +30,17 @@ if settings.enable_alpha then
   }
 end
 
+local noice_cfg = {}
+if settings.enable_noice then
+  noice_cfg =  {
+    "folke/noice.nvim",
+    lazy = true,
+    config = function()
+      require("doctorfree.config.noice")
+    end
+  }
+end
+
 local wilder_type = {}
 if settings.enable_wilder then
   wilder_type = {
@@ -311,13 +322,7 @@ return {
     end,
   },
 
-  {
-    "folke/noice.nvim",
-    lazy = true,
-    config = function()
-      require("doctorfree.config.noice")
-    end,
-  },
+  noice_cfg,
 
   {
     "anuvyklack/windows.nvim",

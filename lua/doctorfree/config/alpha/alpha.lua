@@ -10,6 +10,11 @@ end
 
 local settings = require('configuration')
 
+local filetree = ':NvimTreeOpen<CR>'
+if settings.enable_neotree then
+  filetree = ':Neotree<CR>'
+end
+
 local dashboard = require("alpha.themes.dashboard")
 local nvim_web_devicons = require("nvim-web-devicons")
 local cdir = vim.fn.getcwd()
@@ -189,12 +194,12 @@ local find_file_btn = dashboard.button('f', '  Find File', ':' .. require('ut
 find_file_btn.opts.hl = 'AlphaShortcut'
 local file_browser_btn = dashboard.button('b', '  File Browser', ':Telescope file_browser grouped=true<CR>')
 file_browser_btn.opts.hl = 'AlphaShortcut'
-local file_tree_btn = dashboard.button('e', '  File Tree', ':Neotree<CR>')
+local file_tree_btn = dashboard.button('e', '  File Tree', filetree)
 file_tree_btn.opts.hl = 'AlphaShortcut'
 local find_text_btn = dashboard.button('t', '  Find Text', ':Telescope live_grep<CR>')
 find_text_btn.opts.hl = 'AlphaShortcut'
-local search_project_btn = dashboard.button('p', '  Search Projects', ':Telescope projects<CR>')
-search_project_btn.opts.hl = 'AlphaShortcut'
+-- local search_project_btn = dashboard.button('p', '  Search Projects', ':Telescope projects<CR>')
+-- search_project_btn.opts.hl = 'AlphaShortcut'
 local session_btn = dashboard.button('k', '  Restore A Session', 'require("persistence").load()<CR>')
 session_btn.opts.hl = 'AlphaShortcut'
 local last_session_btn = dashboard.button('K', '  Restore Last Session', 'require("persistence").load({ last = true })<CR>')
@@ -237,7 +242,7 @@ local buttons = {
     file_browser_btn,
     file_tree_btn,
     find_text_btn,
-    search_project_btn,
+    -- search_project_btn,
     session_btn,
     last_session_btn,
     search_zoxide_btn,

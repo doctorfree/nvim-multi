@@ -10,13 +10,13 @@ M.config = "doctorfree"
 -- for different styles and settings for your selected theme.
 -- M.theme = "monokai-pro"
 -- M.theme = "nightfox"
--- M.theme = "kanagawa"
-M.theme = "catppuccin"
+M.theme = "kanagawa"
+-- M.theme = "catppuccin"
 -- M.theme = "tokyonight"
 -- M.theme = "tundra"
 
 -- enable transparency if the theme supports it
-M.enable_transparent = true
+M.enable_transparent = false
 -- Toggle global status line
 M.global_statusline = true
 -- use rg instead of grep
@@ -30,7 +30,7 @@ M.relative_number = false
 -- always show tabs; 0 never, 1 only if at least two tab pages, 2 always
 M.showtabline = 1
 -- enable or disable listchars
-M.list = false
+M.list = true
 -- which list chars to schow
 M.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"
 -- neo-tree or nvim-tree, false will enable nvim-tree

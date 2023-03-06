@@ -147,7 +147,7 @@ telescope.setup({
 })
 
 -- telescope.load_extension('fzf')
-telescope.load_extension('projects')
+-- telescope.load_extension('projects')
 telescope.load_extension('zoxide')
 telescope.load_extension('heading')
 telescope.load_extension('ui-select')
