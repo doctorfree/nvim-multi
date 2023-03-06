@@ -41,10 +41,8 @@ if settings.enable_wilder then
       },
       lazy = true,
       build = function()
-      --   vim.cmd([[packadd wilder.nvim]])
         vim.cmd([[silent UpdateRemotePlugins]])
       end,
-      -- build = ':UpdateRemotePlugins',
       event = { 'CmdwinEnter', 'CmdlineEnter' },
       config = function()
         require("doctorfree.config.wilder")

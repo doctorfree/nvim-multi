@@ -16,7 +16,6 @@ end
 o.autoindent = true         -- always set autoindenting on
 o.backup = false            -- creates a backup file
 o.clipboard = 'unnamedplus' -- keep in sync with the system clipboard
-o.completeopt = 'menu,menuone,noselect' -- A comma separated list of options for Insert mode completion
 o.conceallevel = 0       -- so that `` is visible in markdown files
 o.confirm = true         -- confirm to save changes before exiting modified buffer
 o.cursorline = true      -- highlight the current line
