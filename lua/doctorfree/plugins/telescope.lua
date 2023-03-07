@@ -1,3 +1,5 @@
+local settings = require("configuration")
+
 return {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
@@ -11,6 +13,6 @@ return {
     "ptethng/telescope-makefile",
   },
   config = function()
-    require("doctorfree.config.telescope")
+    require(settings.config .. ".config.telescope")
   end
 }

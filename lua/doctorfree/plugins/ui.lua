@@ -6,7 +6,7 @@ local dashboard_type = {
   dependencies = { { "nvim-tree/nvim-web-devicons" } },
   keys = { { "<leader>0", "<cmd>Dashboard<CR>", desc = "Dashboard" } },
   config = function()
-    require("doctorfree.config.dashboard")
+    require(settings.config .. ".config.dashboard")
   end,
 }
 
@@ -16,15 +16,8 @@ if settings.enable_alpha then
       "goolord/alpha-nvim",
       event = "VimEnter",
       keys = { { "<leader>a", "<cmd>Alpha<cr>", "Alpha" } },
-      config = function() require("doctorfree.config.alpha.alpha") end,
+      config = function() require(settings.config .. ".config.alpha.alpha") end,
     },
-    -- {
-    --   "folke/tokyonight.nvim",
-    --   lazy = false,
-    --   priority = 1000,
-    --   branch = "main",
-    --   config = function() require("doctorfree.themes.tokyonight") end,
-    -- }
   }
 end
 
@@ -34,8 +27,17 @@ if settings.enable_noice then
     "folke/noice.nvim",
     lazy = true,
     config = function()
-      require("doctorfree.config.noice")
-    end
+      require(settings.config .. ".config.noice")
+    end,
+    -- stylua: ignore
+    keys = {
+      { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+      { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
+      { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
+      { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
+      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll forward", mode = {"i", "n", "s"} },
+      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}},
+    },
   }
 end
 
@@ -54,18 +56,44 @@ if settings.enable_wilder then
       end,
       event = { 'CmdwinEnter', 'CmdlineEnter' },
       config = function()
-        require("doctorfree.config.wilder")
+        require(settings.config .. ".config.wilder")
       end
     }
   }
 end
 
 return {
+--  {
+--    "rcarriga/nvim-notify",
+--    keys = {
+--      {
+--        "<leader>n",
+--        function()
+--          require("notify").dismiss({ silent = true, pending = true })
+--        end,
+--        desc = "Delete all Notifications",
+--      },
+--    },
+--    opts = {
+--      timeout = 3000,
+--      max_height = function()
+--        return math.floor(vim.o.lines * 0.75)
+--      end,
+--      max_width = function()
+--        return math.floor(vim.o.columns * 0.75)
+--      end,
+--    },
+--    init = function()
+--      vim.notify = require("notify")
+--    end,
+--  },
+
+  -- Better `vim.notify()`
   {
     "rcarriga/nvim-notify",
     keys = {
       {
-        "<leader>n",
+        "<leader>un",
         function()
           require("notify").dismiss({ silent = true, pending = true })
         end,
@@ -128,7 +156,7 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     config = function()
-      require("doctorfree.config.lualine")
+      require(settings.config .. ".config.lualine")
     end,
   },
 
@@ -136,7 +164,7 @@ return {
     "kdheepak/tabline.nvim",
     event = "VeryLazy",
     config = function()
-      require("doctorfree.config.tabline")
+      require(settings.config .. ".config.tabline")
     end,
   },
 
@@ -285,7 +313,7 @@ return {
   },
 
   {
-    'doctorfree/SetColorSchemes.vim',
+    settings.config .. '/SetColorSchemes.vim',
     lazy = false,
   },
 
@@ -316,7 +344,7 @@ return {
     "SmiteshP/nvim-navic",
     lazy = true,
     config = function()
-      require("doctorfree.config.navic")
+      require(settings.config .. ".config.navic")
     end,
   },
 

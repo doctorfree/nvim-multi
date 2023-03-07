@@ -1,3 +1,5 @@
+local settings = require("configuration")
+
 return {
   {
     "L3MON4D3/LuaSnip",
@@ -79,7 +81,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
     },
     config = function()
-      require("doctorfree.config.nvim-cmp")
+      require(settings.config .. ".config.nvim-cmp")
     end
   },
 

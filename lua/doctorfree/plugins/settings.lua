@@ -1,8 +1,10 @@
+local settings = require("configuration")
+
 ---@param name "autocmds" | "options" | "keymaps"
 local function load(name)
   local Util = require("lazy.core.util")
   -- always load lazyvim, then user file
-  local mod = "doctorfree.core." .. name
+  local mod = settings.config .. ".core." .. name
   Util.try(function()
     require(mod)
   end, {

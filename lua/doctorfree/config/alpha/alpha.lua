@@ -195,9 +195,9 @@ local health_btn = dashboard.button('h', '  Neovim Health', ':checkhealth<CR>
 health_btn.opts.hl = 'AlphaHeader'
 local settings_btn = dashboard.button('s', '  Neovim Settings', ':e ~/.config/nvim/lua/settings.lua<CR>')
 settings_btn.opts.hl = 'AlphaHeader'
-local options_btn = dashboard.button('o', '  Neovim Options', ':e ~/.config/nvim/lua/doctorfree/core/options.lua<CR>')
+local options_btn = dashboard.button('o', '  Neovim Options', ':e ~/.config/nvim/lua/' .. settings.config .. '/core/options.lua<CR>')
 options_btn.opts.hl = 'AlphaHeader'
-local mappings_btn = dashboard.button('m', '  Keyboard Mappings', ':e ~/.config/nvim/lua/doctorfree/core/keymaps.lua<CR>')
+local mappings_btn = dashboard.button('m', '  Keyboard Mappings', ':e ~/.config/nvim/lua/' .. settings.config .. '/core/keymaps.lua<CR>')
 mappings_btn.opts.hl = 'AlphaHeader'
 
 -- Plugin Management
@@ -249,7 +249,7 @@ local lazystats = " Neovim loaded " .. stats.count .. " plugins in " .. ms ..
 local header = {
   type = 'text',
   -- From https://gist.github.com/sRavioli/d6fb0a813b6affc171976b7dd09764d3
-  val = require('doctorfree.config.alpha.headers')['random'],
+  val = require(settings.config .. '.config.alpha.headers')['random'],
   opts = {
     position = 'center',
     hl = 'AlphaHeader',

@@ -1,3 +1,5 @@
+local settings = require("configuration")
+
 return {
   {
     "kevinhwang91/rnvimr",
@@ -26,7 +28,7 @@ return {
     "loctvl842/compile-nvim",
     lazy = true,
     config = function()
-      require("doctorfree.config.compile")
+      require(settings.config .. ".config.compile")
     end,
   },
 
@@ -35,7 +37,7 @@ return {
     lazy = true,
     branch = "master",
     config = function()
-      require("doctorfree.config.renamer")
+      require(settings.config .. ".config.renamer")
     end,
   },
 

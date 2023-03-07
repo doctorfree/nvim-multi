@@ -1,3 +1,5 @@
+local settings = require("configuration")
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -27,17 +29,17 @@ return {
     config = function()
       -- special attach lsp
       require("utils.utils").on_attach(function(client, buffer)
-        require("doctorfree.config.lsp.keymaps").on_attach(client, buffer)
-        require("doctorfree.config.lsp.inlayhints").on_attach(client, buffer)
-        require("doctorfree.config.lsp.gitsigns").on_attach(client, buffer)
+        require(settings.config .. ".config.lsp.keymaps").on_attach(client, buffer)
+        require(settings.config .. ".config.lsp.inlayhints").on_attach(client, buffer)
+        require(settings.config .. ".config.lsp.gitsigns").on_attach(client, buffer)
       end)
 
       -- diagnostics
-      for name, icon in pairs(require("doctorfree.core.icons").diagnostics) do
+      for name, icon in pairs(require(settings.config .. ".core.icons").diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
       end
-      vim.diagnostic.config(require("doctorfree.config.lsp.diagnostics")["on"])
+      vim.diagnostic.config(require(settings.config .. ".config.lsp.diagnostics")["on"])
 
       -- Show line diagnostics automatically in hover window
       vim.cmd([[
@@ -63,7 +65,7 @@ return {
       vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, opts)
       vim.keymap.set('n', '<leader>dt', toggle_diagnostics)
 
-      local servers = require("doctorfree.config.lsp.servers")
+      local servers = require(settings.config .. ".config.lsp.servers")
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
       capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,

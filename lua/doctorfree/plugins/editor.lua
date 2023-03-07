@@ -6,7 +6,7 @@ local treetype = {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
-    require("doctorfree.config.nvim-tree")
+    require(settings.config .. ".config.nvim-tree")
   end
 }
 
@@ -35,7 +35,7 @@ if settings.enable_neotree then
       end
     end,
     config = function()
-      require("doctorfree.config.neo-tree")
+      require(settings.config .. ".config.neo-tree")
     end,
   }
 end
@@ -93,7 +93,6 @@ return {
       -- { "<leader>F",  "<cmd>Telescope live_grep<cr>",                           desc = "Find Text" },
       { "<leader>F",  require("utils.utils").telescope("live_grep"),  desc = "Find Text" },
     },
-    -- config = function() require("doctorfree.config.telescope") end,
   },
 
   {
@@ -109,7 +108,6 @@ return {
       },
     },
     config = function(_, opts)
-      -- require("doctorfree.config.whichkey")
       local wk = require("which-key")
       wk.setup(opts)
       local keymaps = {

@@ -29,11 +29,9 @@ if settings.enable_rainbow2 then
   rainbow_cfg = {
     enable = true,
     -- list of languages you want to disable the plugin for
-    disable = { "jsx", "cpp" },
+    disable = { "html" },
     -- Which query to use for finding delimiters
     query = 'rainbow-parens',
-    -- Highlight the entire buffer all at once
-    strategy = require 'ts-rainbow.strategy.global',
   }
 end
 

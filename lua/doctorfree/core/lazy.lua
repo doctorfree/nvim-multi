@@ -16,7 +16,7 @@ local settings = require("configuration")
 -- load lazy
 -- require("lazy").setup("plugins", {
 require("lazy").setup({
-  spec = "doctorfree.plugins",
+  spec = settings.config .. ".plugins",
   -- defaults = { lazy = true },
   defaults = {
     lazy = false,

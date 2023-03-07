@@ -1,6 +1,7 @@
+local settings = require("configuration")
 return {
   {
-    'doctorfree/asciiart.nvim',
+    settings.config .. '/asciiart.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('asciiart').setup {

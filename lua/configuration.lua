@@ -1,8 +1,10 @@
 local M = {}
 
 -- Configuration
--- Must be one of 'tvl' 'doctorfree'
+-- Must be one of 'tvl' 'doctorfree' or 'LazyVim'
 M.config = "doctorfree"
+-- M.config = "LazyVim"
+-- M.config = "tvl"
 
 -- theme: monokai-pro, nightfox, tokyonight, kanagawa, catppuccin, tundra
 -- refer to the relevant themes settings file in:
@@ -38,11 +40,10 @@ M.enable_neotree = true
 -- Noice heavily changes the Neovim UI ...
 M.enable_noice = false
 -- Enable the newer rainbow treesitter delimiter highlighting
-M.enable_rainbow2 = false
+M.enable_rainbow2 = true
 -- Enable the wilder plugin
 M.enable_wilder = false
 -- Enable/disable tabline or winbar or both
--- Disable tabline with nvim-navic location
 M.enable_tabline = true
 -- Disable winbar with nvim-navic location
 M.enable_winbar = false
@@ -57,7 +58,33 @@ M.disable_dashboard_header = false
 M.disable_dashboard_quick_links = false
 -- treesitter parsers to be installed
 -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-M.treesitter_ensure_installed = { "bash", "c", "cpp", "cmake", "comment", "css", "go", "help", "html", "java", "javascript", "typescript", "json", "lua", "markdown", "markdown_inline", "query", "python", "regex", "rust", "toml", "tsx", "vim", "yaml", "vue" }
+M.treesitter_ensure_installed = {
+  "bash",
+  "c",
+  "cpp",
+  "cmake",
+  "comment",
+  "css",
+  "go",
+  "help",
+  "html",
+  "java",
+  "javascript",
+  "typescript",
+  "json",
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "query",
+  "python",
+  "regex",
+  "rust",
+  "toml",
+  "tsx",
+  "vim",
+  "yaml",
+  "vue",
+}
 
 -- enable greping in hidden files
 M.telescope_grep_hidden = true

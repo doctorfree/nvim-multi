@@ -1,5 +1,7 @@
 -- Currently supported themes:
 --   nightfox, tundra, tokyonight, catppuccin, kanagawa, monokai-pro
+--
+local settings = require("configuration")
 
 return {
   {
@@ -7,7 +9,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("doctorfree.themes.nightfox")
+      require(settings.config .. ".themes.nightfox")
     end,
   },
   {
@@ -15,7 +17,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("doctorfree.themes.tundra")
+      require(settings.config .. ".themes.tundra")
     end,
   },
   {
@@ -24,7 +26,7 @@ return {
     priority = 1000,
     branch = "main",
     config = function()
-      require("doctorfree.themes.tokyonight")
+      require(settings.config .. ".themes.tokyonight")
     end,
   },
   {
@@ -32,7 +34,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("doctorfree.themes.kanagawa")
+      require(settings.config .. ".themes.kanagawa")
     end,
   },
   {
@@ -40,7 +42,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("doctorfree.themes.monokai-pro")
+      require(settings.config .. ".themes.monokai-pro")
     end,
   },
   {
@@ -49,7 +51,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("doctorfree.themes.catppuccin")
+      require(settings.config .. ".themes.catppuccin")
     end,
   }
 }

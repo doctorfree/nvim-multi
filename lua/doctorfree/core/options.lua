@@ -1,4 +1,5 @@
 local settings = require('configuration')
+local config = settings.config
 local options = {
   backup = false, -- creates a backup file
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
@@ -85,13 +86,13 @@ if vim.g.neovide then
 end
 
 -- override with settings in user folder
-require('doctorfree.globals')
+require(config .. '.globals')
 
 -- Global Keymappings
-require('doctorfree.mappings')
+require(config .. '.mappings')
 
 -- All non plugin related (vim) options
-require('doctorfree.options')
+require(config .. '.options')
 
 -- Vim autocommands/autogroups
-require('doctorfree.autocmd')
+require(config .. '.autocmd')
