@@ -28,6 +28,25 @@ else
   }
 end
 
+  -- Hide the tabline, statusline, winbar with '<leader>s'
+vim.api.nvim_set_keymap("n", "<leader>s", "", {
+  callback = function()
+    require("lualine").hide({
+      place = { "statusline", "tabline", "winbar" },
+      unhide = false
+    })
+  end,
+})
+-- Unhide the tabline, statusline, winbar with '<leader>S'
+vim.api.nvim_set_keymap("n", "<leader>S", "", {
+  callback = function()
+    require("lualine").hide({
+      place = { "statusline", "tabline", "winbar" },
+      unhide = true
+    })
+  end,
+})
+
 -- Remap for dealing with visual line wraps
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
@@ -100,7 +119,7 @@ map("t", "<C-w>", "<Esc><C-w>")
 -- Custom Mappings (lua custom mappings are within individual lua config files)
 --
 -- Core
-map("n", [[\]], "<leader>t")
+-- map("n", [[\]], "<leader>t")
 map("n", "<leader>r", ":so ~/.config/nvim/init.vim<CR>")
 map("x", "<leader>a", "gaip*")
 map("n", "<leader>a", "gaip*")
@@ -162,13 +181,16 @@ wk.register({
     d = { "<cmd>Bdelete<cr>", "Close buffer" },
   },
   f = treereg,
-  m = {
-    name = "Misc",
-    C = { "<cmd>:CBcatalog<cr>", "Commentbox Catalog" },
-    l = { "<cmd>source ~/.config/nvim/snippets/*<cr>", "Reload snippets" },
-    p = { "<cmd>Lazy check<cr>", "Lazy check" },
+  P = {
+    name = "Lazy Plugins",
+    c = { "<cmd>Lazy check<cr>", "Lazy check" },
+    C = { "<cmd>Lazy clean<cr>", "Lazy clean" },
+    i = { "<cmd>Lazy install<cr>", "Lazy install" },
+    l = { "<cmd>Lazy<cr>", "Lazy menu" },
+    s = { "<cmd>Lazy sync<cr>", "Lazy sync" },
+    u = { "<cmd>Lazy update<cr>", "Lazy update" },
   },
-  q = {
+  F = {
     name = "Quickfix",
     j = { "<cmd>cnext<cr>", "Next Quickfix Item" },
     k = { "<cmd>cprevious<cr>", "Previous Quickfix Item" },

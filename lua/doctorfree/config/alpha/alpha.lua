@@ -161,29 +161,6 @@ end
 vim.cmd([[
   autocmd FileType alpha setlocal nofoldenable
 ]])
--- vim.cmd([[
---   autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
--- ]])
--- Remove statusline and tabline when in Alpha
-vim.api.nvim_create_autocmd("User", {
-  pattern = "AlphaReady",
-  callback = function()
-    vim.cmd([[
-        setlocal showtabline=0 | autocmd BufUnload <buffer> set showtabline=1
-        setlocal laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
-      ]])
-  end,
-})
-
--- vim.api.nvim_create_autocmd("User", {
---   pattern = "LazyVimStarted",
---   callback = function()
---     local stats = require("lazy").stats()
---     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
---     dashboard.section.footer.val = " Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
---     pcall(vim.cmd.AlphaRedraw)
---   end,
--- })
 
 -- This wouldn't be necessary if we could pass 'opts' in to dashboard.button()
 --

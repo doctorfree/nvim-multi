@@ -18,15 +18,13 @@ if settings.enable_alpha then
       keys = { { "<leader>a", "<cmd>Alpha<cr>", "Alpha" } },
       config = function() require("doctorfree.config.alpha.alpha") end,
     },
-    {
-      "folke/tokyonight.nvim",
-      lazy = false,
-      priority = 1000,
-      branch = "main",
-      config = function()
-        require("doctorfree.themes.tokyonight")
-      end,
-    }
+    -- {
+    --   "folke/tokyonight.nvim",
+    --   lazy = false,
+    --   priority = 1000,
+    --   branch = "main",
+    --   config = function() require("doctorfree.themes.tokyonight") end,
+    -- }
   }
 end
 
@@ -323,25 +321,6 @@ return {
   },
 
   noice_cfg,
-
-  {
-    "anuvyklack/windows.nvim",
-    event = "WinNew",
-    dependencies = {
-      { "anuvyklack/middleclass" },
-      { "anuvyklack/animation.nvim", enabled = true },
-    },
-    opts = {
-      animation = { enable = true, duration = 150, fps = 60 },
-      autowidth = { enable = true },
-    },
-    keys = { { "<leader>m", "<cmd>WindowsMaximize<CR>", desc = "Zoom window" } },
-    init = function()
-      vim.o.winwidth = 30
-      vim.o.winminwidth = 30
-      vim.o.equalalways = true
-    end,
-  },
 
   {
     "NvChad/nvim-colorizer.lua",

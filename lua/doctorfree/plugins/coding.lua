@@ -68,7 +68,8 @@ return {
   {
     "hrsh7th/nvim-cmp",
     version = false,
-    event = "BufEnter",
+    event = "VeryLazy",
+    lazy = true,
     dependencies = {
       "mfussenegger/nvim-jdtls",
       "hrsh7th/cmp-nvim-lsp",
@@ -107,14 +108,13 @@ return {
     "echasnovski/mini.comment",
     event = "VeryLazy",
     opts = {
+      options = {
+        ignore_blank_line = false,
+      },
       mappings = {
-        -- Toggle comment (like `gcip` - comment inner paragraph) for both
-        -- Normal and Visual modes
         comment = 'mc',
-        -- Toggle comment on current line
-        comment_line = 'mcc',
-        -- Define 'comment' textobject (like `dgc` - delete whole comment block)
-        textobject = 'mc',
+        comment_line = 'ml',
+        textobject = 'mt',
       },
       hooks = {
         pre = function()

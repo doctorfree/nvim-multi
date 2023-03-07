@@ -38,7 +38,7 @@ require("tokyonight").setup({
 
   --- You can override specific highlights to use other groups or a hex color
   --- function will be called with a Highlights and ColorScheme table
-  on_highlights = function(highlights, colors) end,
+  --- on_highlights = function(highlights, colors) end,
 })
 
 if settings.theme == "tokyonight" then
@@ -57,18 +57,4 @@ if settings.theme == "tokyonight" then
     vim.api.nvim_set_hl(0, "NeoTreeGitUntracked", { link = "NvimTreeGitDeleted" })
     vim.api.nvim_set_hl(0, "NeoTreeSymbolicLinkTarget", { link = "NvimTreeSymlink" })
   end
-  -- if settings.enable_alpha then
-  --   vim.api.nvim_set_hl(0, "AlphaHeader", { fg = colors.blue })
-  --   vim.api.nvim_set_hl(0, "AlphaHeaderLabel", { fg = colors.orange })
-  --   vim.api.nvim_set_hl(0, "AlphaButtons", { fg = colors.teal })
-  --   vim.api.nvim_set_hl(0, "AlphaShortcut", { fg = colors.cyan })
-  --   vim.api.nvim_set_hl(0, "AlphaFooter", { fg = colors.purple, italic = true })
-  --   vim.api.nvim_set_hl(0, "SpecialComment", { fg = colors.green, italic = true })
-  --   vim.api.nvim_set_hl(0, "Comment", { fg = colors.yellow })
-  --   vim.api.nvim_set_hl(0, "DashboardHeader", { fg = colors.blue })
-  --   vim.api.nvim_set_hl(0, "DashboardHeaderLabel", { fg = colors.orange })
-  --   vim.api.nvim_set_hl(0, "DashboardButtons", { fg = colors.cyan })
-  --   vim.api.nvim_set_hl(0, "DashboardShortcut", { fg = colors.orange })
-  --   vim.api.nvim_set_hl(0, "DashboardFooter", { fg = colors.yellow, italic = true })
-  -- end
 end

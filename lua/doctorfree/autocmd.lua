@@ -9,7 +9,7 @@ api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- don't auto comment new line
-api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
+-- api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
 -- wrap words "softly" (no carriage return) in mail buffer
 api.nvim_create_autocmd("Filetype", {
@@ -86,24 +86,62 @@ api.nvim_create_autocmd(
   { pattern = "*", command = "set nocursorline", group = cursorGrp }
 )
 
--- when there is no buffer left show Alpha dashboard
--- requires "famiu/bufdelete.nvim" and "goolord/alpha-nvim"
-local alpha_on_empty = api.nvim_create_augroup("alpha_on_empty", { clear = true })
-api.nvim_create_autocmd("User", {
-  pattern = "BDeletePost*",
-  group = alpha_on_empty,
-  callback = function(event)
-    local fallback_name = vim.api.nvim_buf_get_name(event.buf)
-    local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
-    local fallback_on_empty = fallback_name == "" and fallback_ft == ""
+if settings.enable_alpha then
+  local alpha_group = api.nvim_create_augroup("alpha_autocmd", { clear = true })
 
-    if fallback_on_empty then
-      -- require("neo-tree").close_all()
-      vim.api.nvim_command("Alpha")
-      vim.api.nvim_command(event.buf .. "bwipeout")
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "AlphaReady",
+    group = alpha_group,
+    callback = function()
+      require("lualine").hide({
+        place = { "statusline", "tabline", "winbar" }, -- the segment this change applies to.
+        unhide = false, -- whether to re-enable lualine again/
+      })
     end
-  end,
-})
+  })
+
+  -- vim.api.nvim_create_autocmd("User", {
+  --   pattern = "AlphaReady",
+  --   group = alpha_group,
+  --   callback = function()
+  --     require("lualine").hide({ unhide = true })
+  --   end
+  -- })
+
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "AlphaReady",
+    group = alpha_group,
+    callback = function()
+      vim.cmd([[
+        setlocal showtabline=0 | autocmd BufUnload <buffer> set showtabline=1
+        setlocal laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
+      ]])
+    end,
+  })
+  -- vim.api.nvim_create_autocmd('BufEnter', {
+  --   pattern = '*',
+  --   group = alpha_group,
+  --   callback = function () require('alpha').redraw() end,
+  -- })
+
+  -- when there is no buffer left show Alpha dashboard
+  -- requires "famiu/bufdelete.nvim" and "goolord/alpha-nvim"
+  api.nvim_create_autocmd("User", {
+    pattern = "BDeletePost*",
+    group = alpha_group,
+    callback = function(event)
+      local fallback_name = vim.api.nvim_buf_get_name(event.buf)
+      local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
+      local fallback_on_empty = fallback_name == "" and fallback_ft == ""
+
+      if fallback_on_empty then
+        -- require("neo-tree").close_all()
+        vim.api.nvim_command("Alpha")
+        vim.api.nvim_command(event.buf .. "bwipeout")
+      end
+    end,
+  })
+end
 
 -- Enable spell checking for certain file types
 api.nvim_create_autocmd(
