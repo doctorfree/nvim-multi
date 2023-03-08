@@ -7,7 +7,7 @@ Lazy Neovim configuration to support multiple configs selectable via settings
 or dashboard. A work in progress.
 
 To configure this Neovim configuration repository, edit `lua/configuration.lua`
-and set `M.config` to one of `tvl`, `LazyVim`, or `doctorfree`.
+and set `M.config` to one of `tvl`, `lazyvim`, or `doctorfree`.
 
 ### Original `tvl` configuration
 
@@ -17,7 +17,7 @@ files remain unchanged and do not use any of the settings in `configuration.lua`
 
 ### LazyVim configuration
 
-Similarly, setting `M.config` in `configuration.lua` to `LazyVim` will configure
+Similarly, setting `M.config` in `configuration.lua` to `lazyvim` will configure
 Neovim using a modified starter template from the
 [LazyVim repository](https://github.com/LazyVim/LazyVim). This also ignores the
 other settings in `configuration.lua`. See https://www.lazyvim.org/ for

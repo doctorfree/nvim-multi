@@ -242,10 +242,6 @@ local buttons = {
   position = 'center',
 }
 
-local stats = require("lazy").stats()
-local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-local lazystats = " Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
-
 local header = {
   type = 'text',
   -- From https://gist.github.com/sRavioli/d6fb0a813b6affc171976b7dd09764d3
@@ -262,10 +258,15 @@ local header = {
 -- local datetime = os.date('  %Y-%b-%d   %H:%M:%S', os.time() - timeShift)
 local datetime = os.date('  %Y-%b-%d   %H:%M:%S', os.time())
 local version = vim.version()
-local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+local version_info = "v" .. version.major .. "." .. version.minor .. "." .. version.patch
+
+local stats = require("lazy").stats()
+local vinfo = "Neovim " .. version_info
+local lazystats = "  loaded " .. stats.count .. " plugins "
+
 local footer = {
   type = "text",
-  val = datetime .. "    " .. lazystats .. nvim_version_info,
+  val = datetime .. "  " .. vinfo .. lazystats,
   opts = {
     position = "center",
     hl = "AlphaFooter",
@@ -309,3 +310,13 @@ local opts = {
 }
 
 alpha.setup(opts)
+
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "LazyVimStarted",
+--   callback = function()
+--     local stats = require("lazy").stats()
+--     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+--     dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+--     pcall(vim.cmd.AlphaRedraw)
+--   end,
+-- })

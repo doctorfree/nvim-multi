@@ -1,10 +1,11 @@
 local M = {}
 
 -- Configuration
--- Must be one of 'tvl' 'doctorfree' or 'LazyVim'
-M.config = "doctorfree"
--- M.config = "LazyVim"
+-- Must be one of 'tvl' 'doctorfree' or 'lazyvim'
+-- M.config = "doctorfree"
+-- M.config = "lazyvim"
 -- M.config = "tvl"
+M.config = "doctorfree"
 
 -- theme: monokai-pro, nightfox, tokyonight, kanagawa, catppuccin, tundra
 -- refer to the relevant themes settings file in:
