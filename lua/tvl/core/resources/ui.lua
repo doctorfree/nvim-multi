@@ -65,8 +65,16 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    opts = {},
     config = function()
-      require("tvl.config.lualine.init").load("monokai-pro")
+      local lualine_config = require("tvl.config.lualine")
+      lualine_config.setup({
+        float = true,
+        separator = "bubble", -- bubble | triangle
+        ---@type any
+        colorful = true,
+      })
+      lualine_config.load()
     end,
   },
 
