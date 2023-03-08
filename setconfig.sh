@@ -13,18 +13,42 @@
 # where <configuration> is a subdirectory in ~/.config/nvim/lua/
 
 new="$1"
-[ "${new}" ] || exit 0
+[ "${new}" ] || {
+  echo "ERROR: Missing <configuration> argument"
+  echo "Usage: setconfig.sh <configuration>"
+  exit 1
+}
 
 luadir=${HOME}/.config/nvim/lua
-[ -d ${luadir}/${new} ] || exit 0
+[ -d ${luadir}/${new} ] || {
+  newnew=$(echo "${new}" | tr '[:upper:]' '[:lower:]')
+  [ -d ${luadir}/${newnew} ] || {
+    echo "ERROR: Cannot locate ${luadir}/${new}"
+    echo "Usage: setconfig.sh <configuration>"
+	echo "Where <configuration> is a subdirectory in ${luadir}"
+    exit 1
+  }
+  new=${newnew}
+}
 
 configfile=${luadir}/configuration.lua
-[ -f ${configfile} ] || exit 0
+[ -f ${configfile} ] || {
+  echo "ERROR: Missing configuration file ${configfile}"
+  exit 1
+}
 
 old=$(grep ^M.config ${configfile} | awk -F '"' ' { print $2 } ')
-[ "${old}" ] || exit 0
+[ "${old}" ] || {
+  echo "WARNING: Cannot locate M.config setting in ${configfile}"
+  echo "Verify this setting is included and at the beginning of a line"
+  exit 1
+}
 
-[ "${new}" == "${old}" ] && exit 0
+[ "${new}" == "${old}" ] && {
+  echo "INFO: M.config already set to ${new}"
+  echo "No changes to ${configfile}"
+  exit 0
+}
 
 cat ${configfile} | sed -e "s/^M.config.*/M.config = \"${new}\"/" > /tmp/nvim$$
 cp /tmp/nvim$$ ${configfile}
