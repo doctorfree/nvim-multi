@@ -80,6 +80,53 @@ $HOME/.config/nvim-multi/lazy.sh install
 nvim
 ```
 
+A convenience script to install and initialize `nvim-multi` is provided at
+[install.sh](install.sh). An automated install and initialization can be
+performed by downloading this script and executing it. Or copy this, save
+it, and execute it:
+
+```bash
+have_git=$(type -p git)
+have_nvim=$(type -p nvim)
+[ "${have_git}" ] || {
+  echo "Install script requires git but git not found"
+  echo "Please install git and retry this install script"
+  exit 1
+}
+[ "${have_nvim}" ] || {
+  echo "Install script requires neovim but nvim not found"
+  echo "Please install neovim and retry this install script"
+  exit 1
+}
+
+[ -d $HOME/.config/nvim-multi ] && {
+  echo "Backing up existing nvim-multi config as $HOME/.config/nvim-multi-bak$$"
+  mv $HOME/.config/nvim-multi $HOME/.config/nvim-multi-bak$$
+}
+
+[ -d $HOME/.local/share/nvim-multi ] && {
+  echo "Backing up existing nvim-multi plugins as $HOME/.local/share/nvim-multi-bak$$"
+  mv $HOME/.local/share/nvim-multi $HOME/.local/share/nvim-multi-bak$$
+}
+
+[ -d $HOME/.local/state/nvim-multi ] && {
+  echo "Backing up existing nvim-multi state as $HOME/.local/state/nvim-multi-bak$$"
+  mv $HOME/.local/state/nvim-multi $HOME/.local/state/nvim-multi-bak$$
+}
+
+printf "\nCloning nvim-multi configuration into $HOME/.config/nvim-multi ... "
+git clone \
+  https://github.com/doctorfree/nvim-multi $HOME/.config/nvim-multi > /dev/null 2>&1
+printf "done"
+export NVIM_APPNAME="nvim-multi"
+printf "\nInitializing newly installed neovim configuration ... "
+$HOME/.config/nvim-multi/lazy.sh install > /dev/null 2>&1
+printf "done\n"
+nvim
+printf "\nAdd the following line to your .bashrc or .zshrc shell initialization:"
+printf '\n\texport NVIM_APPNAME="nvim-multi"\n'
+```
+
 This procedure allows you to keep any existing `~/.config/nvim` and install
 multiple Neovim configurations, each in its own separate
 `~/.config/$NVIM_APPNAME` folder.
@@ -92,6 +139,22 @@ Add the line `export NVIM_APPNAME="nvim-multi"` to your shell initialization
 and re-login or source the initialization file. If this is not done then
 subsequent invocations of `nvim` will attempt to use `~/.config/nvim` rather
 than `~/.config/nvim-multi`.
+
+### Neovim install
+
+Note also that a convenience script to install Neovim is provided at
+[install_neovim.sh](install_neovim.sh):
+
+```bash
+[ -d $HOME/src ] || mkdir -p $HOME/src
+git clone https://github.com/neovim/neovim.git $HOME/src/neovim
+cd $HOME/neovim
+sudo rm /usr/local/bin/nvim
+sudo rm -r /usr/local/share/nvim/
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+sudo rm -rf $HOME/src/neovim
+```
 
 ### Selecting which of the `nvim-multi` configurations to use
 
