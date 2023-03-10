@@ -100,14 +100,6 @@ if settings.enable_alpha then
     end
   })
 
-  -- vim.api.nvim_create_autocmd("User", {
-  --   pattern = "AlphaReady",
-  --   group = alpha_group,
-  --   callback = function()
-  --     require("lualine").hide({ unhide = true })
-  --   end
-  -- })
-
   vim.api.nvim_create_autocmd("User", {
     pattern = "AlphaReady",
     group = alpha_group,
@@ -118,11 +110,6 @@ if settings.enable_alpha then
       ]])
     end,
   })
-  -- vim.api.nvim_create_autocmd('BufEnter', {
-  --   pattern = '*',
-  --   group = alpha_group,
-  --   callback = function () require('alpha').redraw() end,
-  -- })
 
   -- when there is no buffer left show Alpha dashboard
   -- requires "famiu/bufdelete.nvim" and "goolord/alpha-nvim"
