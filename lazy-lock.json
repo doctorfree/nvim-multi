@@ -1,7 +1,7 @@
 {
   "LuaSnip": { "branch": "master", "commit": "e650efa2255990193454f43af828a3d8f4fe66ba" },
   "SetColorSchemes.vim": { "branch": "main", "commit": "7994f5e349a9b44b6c9ac5da98b922d373092e8f" },
-  "alpha-nvim": { "branch": "main", "commit": "906649c3991903d14cef8fae1fe5557193ca743c" },
+  "alpha-nvim": { "branch": "main", "commit": "4e1c4dedf5983e84b3ed305228b2235c56c7023c" },
   "asciiart.nvim": { "branch": "main", "commit": "2159e167442e4d1bcf467d0c5cc59973d7feb626" },
   "barbecue.nvim": { "branch": "fix/E36", "commit": "3dbfe7bd2398774d00afa3e2130dae97ea344d5b" },
   "bufferline.nvim": { "branch": "main", "commit": "b337fd393cef2e3679689d220e2628722c20ddcb" },

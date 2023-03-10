@@ -103,19 +103,6 @@ return {
     config = function()
       require("mason").setup()
     end,
-    -- opts = {
-    --   ui = {
-    --     -- border = "rounded",
-    --     border = { "▄", "▄", "▄", "█", "▀", "▀", "▀", "█" },
-    --     icons = {
-    --       package_installed = "◍",
-    --       package_pending = "◍",
-    --       package_uninstalled = "◍",
-    --     },
-    --   },
-    --   log_level = vim.log.levels.INFO,
-    --   max_concurrent_installers = 4,
-    -- },
   },
 
   -- formatters
