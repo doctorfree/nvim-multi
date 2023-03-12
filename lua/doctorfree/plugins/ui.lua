@@ -313,7 +313,7 @@ return {
   },
 
   {
-    settings.config .. '/SetColorSchemes.vim',
+    'doctorfree/SetColorSchemes.vim',
     lazy = false,
   },
 

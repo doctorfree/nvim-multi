@@ -9,7 +9,7 @@ M.config = "doctorfree"
 
 -- theme: monokai-pro, nightfox, tokyonight, kanagawa, catppuccin, tundra
 -- refer to the relevant themes settings file in:
---   ~/.config/nvim/lua/*/plugins/themes/
+--   ~/.config/nvim-multi/lua/*/plugins/themes/
 -- for different styles and settings for your selected theme.
 -- M.theme = "monokai-pro"
 -- M.theme = "nightfox"
