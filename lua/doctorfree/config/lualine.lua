@@ -3,13 +3,24 @@
 -- nvim-lualine/lualine.nvim
 -------------------------------------------------------------------------------
 
-local settings = require("configuration")
 local lualine = require('lualine')
 local navic = require('nvim-navic')
+local utils = require('utils.functions')
+local settings = require("configuration")
 
 local theme = settings.theme
-if theme == "onedarkpro" then
-  theme = require(settings.config .. '.themes.lualine.' .. settings.theme_style)
+local style = settings.theme_style
+local config = settings.config
+local theme_root = vim.fn.stdpath('config')..'/lua/'..config..'/themes/lualine/'
+local theme_path = theme_root .. style .. '.lua'
+
+if utils.file_or_dir_exists(theme_path) then
+  theme = require(config .. '.themes.lualine.' .. style)
+else
+  theme_path = theme_root .. theme .. '.lua'
+  if utils.file_or_dir_exists(theme_path) then
+    theme = require(config .. '.themes.lualine.' .. theme)
+  end
 end
 
 local tabline_cfg = {}
