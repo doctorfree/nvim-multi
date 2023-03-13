@@ -1,6 +1,7 @@
 -- Currently supported themes:
---   nightfox, tundra, tokyonight, catppuccin, kanagawa, monokai-pro
+--   nightfox, tundra, tokyonight, catppuccin, kanagawa, monokai-pro, onedarkpro
 --
+
 local settings = require("configuration")
 
 return {
@@ -10,6 +11,14 @@ return {
     priority = 1000,
     config = function()
       require(settings.config .. ".themes.nightfox")
+    end,
+  },
+  {
+    "olimorris/onedarkpro.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require(settings.config .. ".themes.onedarkpro")
     end,
   },
   {
