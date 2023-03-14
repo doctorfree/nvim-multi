@@ -76,21 +76,21 @@ cmp.setup({
     ['<C-y>'] = cmp.mapping.confirm({select = true}),
     ['<CR>'] = cmp.mapping.confirm({select = false}),
 
-    ['<C-f>'] = cmp.mapping(function(fallback)
-      if luasnip.jumpable(1) then
-        luasnip.jump(1)
-      else
-        fallback()
-      end
-    end, {'i', 's'}),
+    -- ['<C-f>'] = cmp.mapping(function(fallback)
+    --   if luasnip.jumpable(1) then
+    --     luasnip.jump(1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, {'i', 's'}),
 
-    ['<C-b>'] = cmp.mapping(function(fallback)
-      if luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, {'i', 's'}),
+    -- ['<C-b>'] = cmp.mapping(function(fallback)
+    --   if luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, {'i', 's'}),
 
     ['<Tab>'] = cmp.mapping(function(fallback)
       local col = vim.fn.col('.') - 1
